@@ -1,2 +1,2 @@
-const nodeWebgpu = require('@axinging/webgpu')
+import * as  nodeWebgpu from '@axinging/webgpu'
 console.log(nodeWebgpu.getNodeGPU())

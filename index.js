@@ -1,4 +1,4 @@
-import nodeGPUBinding from 'bindings';
+var nodeGPUBinding = require('@axinging/webgpu');
 
 let nodeGPU = null;
 export function getNodeGPU() {

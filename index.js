@@ -1,14 +1,22 @@
 var nodeGPUBinding = require('bindings');
 
-let nodeGPU = null;
-function getNodeGPU() {
-  if (nodeGPU) {
-    return nodeGPU;
+var nodeGPU = (function() {
+  var nodeGPUInstance;
+  function createNodeGPU() {
+    const gpuProviderModule = nodeGPUBinding('dawn');
+    const gpuProviderFlags = ['disable-dawn-features=disallow_unsafe_apis'];
+    nodeGPUInstance = gpuProviderModule.create(gpuProviderFlags);
+    return nodeGPUInstance;
   }
-  const gpuProviderModule = nodeGPUBinding('dawn');
-  const gpuProviderFlags = ['disable-dawn-features=disallow_unsafe_apis'];
-  nodeGPU = gpuProviderModule.create(gpuProviderFlags);
-  return nodeGPU;
-}
 
-module.exports = exports = getNodeGPU;
+  return {
+    getNodeGPU: function() {
+      if (!nodeGPUInstance) {
+        nodeGPUInstance = createNodeGPU();
+      }
+      return nodeGPUInstance;
+    }
+  };
+})();
+
+module.exports = exports = nodeGPU;

@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/axinging/webgpu/issues"
   },
-  "homepage": "https://github.com/axinging/webgpu#readme",
+  "homepage": "https://github.com/axinging/webgpu#README.md",
   "description": "",
   "dependencies": {
     "bindings": "^1.5.0"

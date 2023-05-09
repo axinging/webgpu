@@ -1,7 +1,7 @@
-var nodeGPUBinding = require('@axinging/webgpu');
+var nodeGPUBinding = require('bindings');
 
 let nodeGPU = null;
-export function getNodeGPU() {
+function getNodeGPU() {
   if (nodeGPU) {
     return nodeGPU;
   }
@@ -10,3 +10,5 @@ export function getNodeGPU() {
   nodeGPU = gpuProviderModule.create(gpuProviderFlags);
   return nodeGPU;
 }
+
+module.exports = exports = getNodeGPU;
